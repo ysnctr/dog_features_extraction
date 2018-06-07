@@ -3,7 +3,7 @@ import scipy as sp
 import numpy as np
 
 from sklearn.preprocessing import Normalizer
-from sklearn.preprocessing import StandardScaler
+
 from scipy import fftpack
 
 # function to extract features from training data
@@ -170,14 +170,7 @@ def extractFeat (accelData, n):
     return features;
 
 
-def normalizeFeatures(features):
+def normalizeFeatures(features, y_features):
     normalizer = Normalizer()
-    normalizer.fit(features)
-    normalizer.transform(features)
-    return features;
-
-def scaleFeatures(features):
-    scaler = StandardScaler()
-    scaler.fit(features)
-    scaler.transform(features)
-    return features;
+    normalized_features = pd.DataFrame(data = normalizer.fit_transform(features, y_features), columns=features.columns, index=features.index)
+    return normalized_features;
