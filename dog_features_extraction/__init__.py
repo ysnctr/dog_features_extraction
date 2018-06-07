@@ -3,6 +3,7 @@ import scipy as sp
 import numpy as np
 
 from sklearn.preprocessing import Normalizer
+from sklearn.preprocessing import StandardScaler
 from scipy import fftpack
 
 # function to extract features from training data
