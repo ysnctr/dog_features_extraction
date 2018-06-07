@@ -2,6 +2,7 @@ import pandas as pd
 import scipy as sp
 import numpy as np
 
+from sklearn.preprocessing import Normalizer
 from scipy import fftpack
 
 # function to extract features from training data
@@ -169,6 +170,13 @@ def extractFeat (accelData, n):
 
 
 def normalizeFeatures(features):
+    normalizer = Normalizer()
+    normalizer.fit(features)
+    normalizer.transform(features)
+    return features;
 
-
-    return normalized_features;
+def scaleFeatures(features):
+    scaler = StandardScaler()
+    scaler.fit(features)
+    scaler.transform(features)
+    return features;
