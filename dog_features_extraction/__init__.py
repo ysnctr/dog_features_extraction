@@ -3,6 +3,7 @@ import scipy as sp
 import numpy as np
 
 from sklearn.preprocessing import Normalizer
+from sklearn.decomposition import PCA
 
 from scipy import fftpack
 
@@ -174,3 +175,14 @@ def normalizeFeatures(features, y_features):
     normalizer = Normalizer()
     normalized_features = pd.DataFrame(data = normalizer.fit_transform(features, y_features), columns=features.columns, index=features.index)
     return normalized_features;
+
+def featureSelection_99explained(features):
+    pca = PCA(n_components=0.99)
+    trans = pd.DataFrame(data = pca.fit_transform(features))
+    print('Number of features reduced to:', trans.shape[1])
+    return trans;
+
+def featureSelection_2d_visualise(features):
+    pca = PCA(n_components = 2)
+    trans = pd.DataFrame(data = pca.fit_transform(features))
+    return trans;
