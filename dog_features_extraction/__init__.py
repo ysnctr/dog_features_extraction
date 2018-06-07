@@ -1,5 +1,4 @@
 import pandas as pd
-import scipy.io as scio
 import scipy as sp
 import numpy as np
 
@@ -167,3 +166,9 @@ def extractFeat (accelData, n):
 
     features.dropna(how = 'all', inplace=True, axis = 0)
     return features;
+
+
+def normalizeFeatures(features):
+
+
+    return normalized_features;
