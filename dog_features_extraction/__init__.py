@@ -176,13 +176,30 @@ def normalizeFeatures(features, y_features):
     normalized_features = pd.DataFrame(data = normalizer.fit_transform(features, y_features), columns=features.columns, index=features.index)
     return normalized_features;
 
-def featureSelection_99explained(features):
-    pca = PCA(n_components=0.99)
+def featureSelection_95explained(features):
+    pca = PCA(n_components=0.95)
     trans = pd.DataFrame(data = pca.fit_transform(features))
-    print('Number of features reduced to:', trans.shape[1])
+    print('Number of features for 0.95 variance explained:', trans.shape[1])
     return trans;
 
-def featureSelection_2d_visualise(features):
+def featureSelection_2d_visualise(features, y_features):
     pca = PCA(n_components = 2)
-    trans = pd.DataFrame(data = pca.fit_transform(features))
+    trans = pd.DataFrame(data = pca.fit_transform(features), columns = {'pc1','pc2'})
+
+    # figure showing data in PC1 and PC2 axes
+    fig = plt.figure(figsize = (10,10))
+    ax = fig.add_subplot(1,1,1)
+    ax.set_xlabel('Principal Component 1', fontsize = 15)
+    ax.set_ylabel('Principal Component 2', fontsize = 15)
+    ax.set_title('2 component PCA', fontsize = 20)
+    targets = [1, 2, 3, 4]
+    colors = ['r', 'g', 'b', 'y']
+    for target, color in zip(targets,colors):
+        indicesToKeep = y_features == target
+        ax.scatter(finalDf.loc[indicesToKeep, 'pc2']
+                   , finalDf.loc[indicesToKeep, 'pc1']
+                   , c = color
+                   , s = 50)
+    ax.legend(targets)
+    ax.grid()
     return trans;
