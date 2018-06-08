@@ -210,7 +210,7 @@ def featureSelection_pca(features, title):
     ax2.tick_params(axis='both', which='major', labelsize=18);
     ax2.tick_params(axis='both', which='minor', labelsize=12);
     #plt.xlim([0, 29]);
-    plt.legend(loc=(0.01, 0),fontsize = 18);
+    plt.legend(loc=(0.01, 0.025),fontsize = 18);
 
     plt.savefig("featureSelection_pca_"+title)
 
