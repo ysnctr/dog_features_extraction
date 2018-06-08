@@ -217,7 +217,7 @@ def featureSelection_pca(features, title):
 def featureSelection_2d_visualise(features, y_features, title):
     pca = PCA(n_components = 2)
     trans = pd.DataFrame(data = pca.fit_transform(features), columns = {'pc1','pc2'})
-
+    print(trans.shape)
     # figure showing data in PC1 and PC2 axes
     fig = plt.figure(figsize = (10,10))
     ax = fig.add_subplot(1,1,1)
