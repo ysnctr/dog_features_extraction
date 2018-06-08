@@ -201,7 +201,7 @@ def featureSelection_pca(features, title):
     plt.legend(loc=(0.01, 0.075) ,fontsize = 18);
 
     ax2 = ax1.twinx()
-    ax2.semilogy(pca_trafo.explained_variance_ratio_.cumsum(), '--go', label = 'cumulative explained variance ratio');
+    ax2.semilogy(pca_trace.explained_variance_ratio_.cumsum(), '--go', label = 'cumulative explained variance ratio');
     for tl in ax2.get_yticklabels():
         tl.set_color('g')
     ax1.tick_params(axis='both', which='major', labelsize=18);
