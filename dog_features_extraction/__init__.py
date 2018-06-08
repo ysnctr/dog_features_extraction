@@ -198,7 +198,7 @@ def featureSelection_pca(features, title):
     for tl in ax1.get_yticklabels():
         tl.set_color('b')
 
-    plt.legend(loc= 'best' ,fontsize = 18);
+    plt.legend(loc= 'lower right' ,fontsize = 18);
     ax1.set_title(title)
 
     ax2 = ax1.twinx()
@@ -232,7 +232,7 @@ def featureSelection_2d_visualise(features, y_features, title):
                    , trans.loc[indicesToKeep, 'pc1']
                    , c = color
                    , s = 50)
-    ax.legend(targets, loc='lower right')
+    ax.legend(targets)
     ax.grid()
     plt.savefig("2d_pca_"+title)
     return trans;
