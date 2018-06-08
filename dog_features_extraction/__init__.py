@@ -196,8 +196,8 @@ def featureSelection_2d_visualise(features, y_features):
     colors = ['r', 'g', 'b', 'y']
     for target, color in zip(targets,colors):
         indicesToKeep = y_features == target
-        ax.scatter(finalDf.loc[indicesToKeep, 'pc2']
-                   , finalDf.loc[indicesToKeep, 'pc1']
+        ax.scatter(trans.loc[indicesToKeep, 'pc2']
+                   , trans.loc[indicesToKeep, 'pc1']
                    , c = color
                    , s = 50)
     ax.legend(targets)
