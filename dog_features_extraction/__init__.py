@@ -196,7 +196,7 @@ def featureSelection_pca(features, title):
     color =  ax1.lines[0].get_color()
     ax1.set_xlabel('Principal Component', fontsize = 20);
     for tl in ax1.get_yticklabels():
-        tl.set_color(plot1[0].get_color())
+        tl.set_color('b')
 
     plt.legend(loc=(0.01, 0.075) ,fontsize = 18);
 
