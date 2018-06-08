@@ -182,13 +182,37 @@ def scaleFeatures(features, y_features):
     scaled_features = pd.DataFrame(data = scaler.fit_transform(features, y_features), columns=features.columns, index=features.index)
     return scaled_features;
 
-def featureSelection_95explained(features):
-    pca = PCA(n_components=0.95)
+def featureSelection_n_variance_explained(features, n):
+    pca = PCA(n_components= n)
     trans = pd.DataFrame(data = pca.fit_transform(features))
-    print('Number of features for 0.95 variance explained:', trans.shape[1])
+    print('Number of features for ',n,' variance explained:', trans.shape[1])
     return trans;
 
-def featureSelection_2d_visualise(features, y_features):
+def featureSelection_pca(features, title):
+    pca_trace = PCA().fit(features);
+    fig, ax1 = plt.subplots(figsize = (10,6.5))
+    ax1.semilogy(pca_trace.explained_variance_ratio_, '--o', label = 'explained variance ratio');
+    color =  ax1.lines[0].get_color()
+    ax1.set_xlabel('Principal Component', fontsize = 20);
+    for tl in ax1.get_yticklabels():
+        tl.set_color(plot1[0].get_color())
+
+    plt.legend(loc=(0.01, 0.075) ,fontsize = 18);
+
+    ax2 = ax1.twinx()
+    ax2.semilogy(pca_trafo.explained_variance_ratio_.cumsum(), '--go', label = 'cumulative explained variance ratio');
+    for tl in ax2.get_yticklabels():
+        tl.set_color('g')
+    ax1.tick_params(axis='both', which='major', labelsize=18);
+    ax1.tick_params(axis='both', which='minor', labelsize=12);
+    ax2.tick_params(axis='both', which='major', labelsize=18);
+    ax2.tick_params(axis='both', which='minor', labelsize=12);
+    #plt.xlim([0, 29]);
+    plt.legend(loc=(0.01, 0),fontsize = 18);
+    plt.set_title(title)
+    plt.show()
+
+def featureSelection_2d_visualise(features, y_features, title):
     pca = PCA(n_components = 2)
     trans = pd.DataFrame(data = pca.fit_transform(features), columns = {'pc1','pc2'})
 
@@ -197,7 +221,7 @@ def featureSelection_2d_visualise(features, y_features):
     ax = fig.add_subplot(1,1,1)
     ax.set_xlabel('Principal Component 1', fontsize = 15)
     ax.set_ylabel('Principal Component 2', fontsize = 15)
-    ax.set_title('2 component PCA', fontsize = 20)
+    ax.set_title(title, fontsize = 20)
     targets = [1, 2, 3, 4]
     colors = ['r', 'g', 'b', 'y']
     for target, color in zip(targets,colors):
