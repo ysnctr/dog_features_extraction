@@ -210,7 +210,7 @@ def featureSelection_pca(features, title):
     ax2.tick_params(axis='both', which='major', labelsize=18);
     ax2.tick_params(axis='both', which='minor', labelsize=12);
     #plt.xlim([0, 29]);
-    plt.legend(loc='best',fontsize = 18);
+    plt.legend(loc='bottom right',fontsize = 18);
 
     plt.savefig("featureSelection_pca_"+title)
 
@@ -232,7 +232,7 @@ def featureSelection_2d_visualise(features, y_features, title):
                    , trans.loc[indicesToKeep, 'pc1']
                    , c = color
                    , s = 50)
-    ax.legend(targets)
+    ax.legend(targets, loc='bottom right')
     ax.grid()
     plt.savefig("2d_pca_"+title)
     return trans;
