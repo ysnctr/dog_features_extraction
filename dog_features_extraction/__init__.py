@@ -199,6 +199,7 @@ def featureSelection_pca(features, title):
         tl.set_color('b')
 
     plt.legend(loc=(0.01, 0.075) ,fontsize = 18);
+    ax1.set_title(title)
 
     ax2 = ax1.twinx()
     ax2.semilogy(pca_trace.explained_variance_ratio_.cumsum(), '--go', label = 'cumulative explained variance ratio');
@@ -210,7 +211,7 @@ def featureSelection_pca(features, title):
     ax2.tick_params(axis='both', which='minor', labelsize=12);
     #plt.xlim([0, 29]);
     plt.legend(loc=(0.01, 0),fontsize = 18);
-    plt.set_title(title)
+
     plt.show()
 
 def featureSelection_2d_visualise(features, y_features, title):
