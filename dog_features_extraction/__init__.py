@@ -216,10 +216,12 @@ def featureSelection_pca(features, title):
 
 def featureSelection_2d_visualise(features, y_features, title):
     plt.figure()
+    pca = PCA(n_components=2)
+    X_r = pca.fit(features).transform(features)
     colors = ['navy', 'turquoise', 'darkorange', 'red']
     target_names = [1,2,3,4]
     for color, i, target_name in zip(colors, [1, 2, 3, 4], target_names):
-        plt.scatter(X_r[y == i, 0], X_r[y == i, 1], color=color, alpha=.8, lw=lw,
+        plt.scatter(X_r[y_features == i, 0], X_r[y_features == i, 1], color=color, alpha=.8,
                 label=target_name)
     plt.legend(loc='best', shadow=False, scatterpoints=1)
     plt.title('PCA of IRIS dataset')
