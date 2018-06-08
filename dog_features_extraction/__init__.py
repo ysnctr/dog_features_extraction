@@ -215,34 +215,24 @@ def featureSelection_pca(features, title):
     plt.savefig("featureSelection_pca_"+title)
 
 def featureSelection_2d_visualise(features, y_features, title):
-    plt.figure()
-    pca = PCA(n_components=2)
-    X_r = pca.fit(features).transform(features)
-    colors = ['navy', 'turquoise', 'darkorange', 'red']
-    target_names = [1,2,3,4]
-    for color, i, target_name in zip(colors, [1, 2, 3, 4], target_names):
-        plt.scatter(X_r[y_features == i, 0], X_r[y_features == i, 1], color=color, alpha=.8,
-                label=target_name)
-    plt.legend(loc='best', shadow=False, scatterpoints=1)
-    plt.title('PCA of IRIS dataset')
-    # pca = PCA(n_components = 2)
-    # trans = pd.DataFrame(data = pca.fit_transform(features), columns = {'pc1','pc2'})
-    # print(trans)
-    # # figure showing data in PC1 and PC2 axes
-    # fig = plt.figure(figsize = (10,10))
-    # ax = fig.add_subplot(1,1,1)
-    # ax.set_xlabel('Principal Component 1', fontsize = 15)
-    # ax.set_ylabel('Principal Component 2', fontsize = 15)
-    # ax.set_title(title, fontsize = 20)
-    # targets = [1, 2, 3, 4]
-    # colors = ['r', 'g', 'b', 'y']
-    # for target, color in zip(targets,colors):
-    #     indicesToKeep = y_features == target
-    #     ax.scatter(trans.loc[indicesToKeep, 'pc2']
-    #                , trans.loc[indicesToKeep, 'pc1']
-    #                , c = color
-    #                , s = 50)
-    # ax.legend(targets)
-    # ax.grid()
+    pca = PCA(n_components = 2)
+    trans = pd.DataFrame(data = pca.fit_transform(features), columns = {'pc1','pc2'})
+    print(trans)
+    # figure showing data in PC1 and PC2 axes
+    fig = plt.figure(figsize = (10,10))
+    ax = fig.add_subplot(1,1,1)
+    ax.set_xlabel('Principal Component 1', fontsize = 15)
+    ax.set_ylabel('Principal Component 2', fontsize = 15)
+    ax.set_title(title, fontsize = 20)
+    targets = [1, 2, 3, 4]
+    colors = ['r', 'g', 'b', 'y']
+    for target, color in zip(targets,colors):
+        indicesToKeep = y_features == target
+        ax.scatter(trans.loc[indicesToKeep, 'pc2']
+                   , trans.loc[indicesToKeep, 'pc1']
+                   , c = color
+                   , s = 50)
+    ax.legend(targets)
+    ax.grid()
     plt.savefig("2d_pca_"+title)
-    # return trans;
+    return trans;
