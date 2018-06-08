@@ -1,6 +1,7 @@
 import pandas as pd
 import scipy as sp
 import numpy as np
+import matplotlib.pyplot as plt
 
 from sklearn.preprocessing import Normalizer
 from sklearn.preprocessing import StandardScaler
