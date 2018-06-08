@@ -212,7 +212,7 @@ def featureSelection_pca(features, title):
     #plt.xlim([0, 29]);
     plt.legend(loc='best',fontsize = 18);
 
-    plt.savefig("featureSelection_pca_",title)
+    plt.savefig("featureSelection_pca_"+title)
 
 def featureSelection_2d_visualise(features, y_features, title):
     pca = PCA(n_components = 2)
@@ -234,5 +234,5 @@ def featureSelection_2d_visualise(features, y_features, title):
                    , s = 50)
     ax.legend(targets)
     ax.grid()
-    plt.savefig("2d_pca_",title)
+    plt.savefig("2d_pca_"+title)
     return trans;
