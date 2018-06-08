@@ -216,8 +216,7 @@ def featureSelection_pca(features, title):
 
 def featureSelection_2d_visualise(features, y_features, title):
     pca = PCA(n_components = 2)
-    trans = pd.DataFrame(data = pca.fit_transform(features), columns = {'pc1','pc2'})
-    print(trans)
+    trans = pca.fit_transform(features)
     # figure showing data in PC1 and PC2 axes
     fig = plt.figure(figsize = (10,10))
     ax = fig.add_subplot(1,1,1)
@@ -228,8 +227,8 @@ def featureSelection_2d_visualise(features, y_features, title):
     colors = ['r', 'g', 'b', 'y']
     for target, color in zip(targets,colors):
         indicesToKeep = y_features == target
-        ax.scatter(trans.loc[indicesToKeep, 'pc2']
-                   , trans.loc[indicesToKeep, 'pc1']
+        ax.scatter(trans[indicesToKeep['label'], 0]
+                   , trans[indicesToKeep['label'], 1]
                    , c = color
                    , s = 50)
     ax.legend(targets)
