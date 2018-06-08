@@ -198,7 +198,7 @@ def featureSelection_pca(features, title):
     for tl in ax1.get_yticklabels():
         tl.set_color('b')
 
-    plt.legend(loc=(0.01, 0.075) ,fontsize = 18);
+    plt.legend(loc= 'best' ,fontsize = 18);
     ax1.set_title(title)
 
     ax2 = ax1.twinx()
@@ -210,7 +210,7 @@ def featureSelection_pca(features, title):
     ax2.tick_params(axis='both', which='major', labelsize=18);
     ax2.tick_params(axis='both', which='minor', labelsize=12);
     #plt.xlim([0, 29]);
-    plt.legend(loc=(0.01, 0),fontsize = 18);
+    plt.legend(loc='best',fontsize = 18);
 
     plt.show()
 
