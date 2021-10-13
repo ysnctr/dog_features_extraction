@@ -1,7 +1,7 @@
 # dog_features_extraction
 features extraction from dog accelerometer data
 ## How to use?
-Open terminal and use pip install git+https://github.com/mda14/dog_features_extraction.git
+Open terminal and use pip install git+https://github.com/ysnctr/dog_features_extraction.git
 
 ## Features extracted:
 mean_x,std_x,skew_x,max_x,min_x,
