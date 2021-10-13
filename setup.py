@@ -1,5 +1,8 @@
 from setuptools import setup
 
+with open('requirements.txt') as f:
+    required = f.read().splitlines()
+
 setup(name='dog_features_extraction',
       version='0.1',
       description='Features extraction for dog accelerometer data',
@@ -8,4 +11,5 @@ setup(name='dog_features_extraction',
       author_email='mda14@ic.ac.uk',
       license='Imperial College London',
       packages=['dog_features_extraction'],
+      install_requires=required,
       zip_safe=False)
